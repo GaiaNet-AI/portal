@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap" rel="stylesheet">
+    <title>GaiaNet-AI</title>
+    <style>
+        .link-button {
+            cursor: pointer;
+            font-size: 1.8vw;
+            color: white;
+            background: rgb(30, 7, 6);
+            padding: 1.2vw 3.5vw;
+            border: 0.0625vw solid rgba(212, 51, 39, 0.7);
+            position: relative;
+            clip-path: polygon(calc(100% - 1.0625vw) 0, calc(100% - 1.0625vw) 1.0625vw, 100% 1.0625vw, 100% 100%, 0 100%, 0 0);
+        }
+
+        .link-button::after {
+            content: "";
+            width: 1vw;
+            height: 1vw;
+            background-color: transparent;
+            border-left: 0.0625vw solid rgba(212, 51, 39, 0.7);
+            border-bottom: 0.0625vw solid rgba(212, 51, 39, 0.7);
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        .inside-square {
+            width: 1vw;
+            height: 1vw;
+            background-color: #B82016;
+            position: absolute;
+            top: -0.3vw;
+            right: -0.3vw;
+        }
+
+        .link-button:hover {
+            background-color: #B82016;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px; /* 光标宽度 */
+            height: 100%; /* 光标高度 */
+            background-color: white; /* 光标颜色 */
+            animation: blink 1s infinite; /* 光标闪烁动画 */
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body style="font-family: Fragment Mono,monospace;background-image: url(src/media/background.svg);background-size: cover;background-repeat: no-repeat;background-position-y: center;background-position-x: center;margin: 0;padding: 0;">
+<div style="height: 100vh;display: flex;justify-content: space-between;flex-direction: column;align-items: center;">
+    <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 4vw;">
+        <img alt="logo"
+             style="-webkit-user-drag: none;user-select: none;width: 22.5vw;margin-left: 5.5vw;"
+             src="src/media/logo.svg"/>
+        <img alt="text"
+             style="-webkit-user-drag: none;user-select: none;width: 26.75vw;margin-right: 5.5vw;"
+             src="src/media/text.svg"/>
+    </div>
+    <div style="width: 90%;display: flex;flex-direction: column;align-items: center;">
+        <div style="background-color: #1E0706;border: 0.0625vw solid #FFFFFF;display: flex;border-radius: 1.5vw;font-size: 3.5vw;padding: 2.5vw 3.5vw;">
+            <div style="color:#E23528;margin-right: 1.5vw;">Decentralizing</div>
+<!--            <div style="display: flex;">-->
+                <div style="color:white;" id="typed-text">Al Teaching Assistant</div><span id="cursor" class="cursor"></span>
+<!--            </div>-->
+        </div>
+        <div style="color:#E42B1E;background-color: black;font-size: 2vw;padding: 0.75vw 2.25vw;border-radius: 1.75vw;width: max-content;margin-top: 2.5vw;">
+            Cmd: abcdsifakldfiakd
+        </div>
+    </div>
+    <div style="margin-bottom: 4vw;width: 80%;display: flex;justify-content: space-between;">
+        <div style="position: relative;">
+            <div class="inside-square"></div>
+            <div class="link-button">
+                Github
+            </div>
+        </div>
+        <div style="position: relative;">
+            <div class="inside-square"></div>
+            <div class="link-button">
+                huggingface
+            </div>
+        </div>
+        <div style="position: relative;">
+            <div class="inside-square"></div>
+            <div class="link-button">
+                WaitList
+            </div>
+        </div>
+        <div style="position: relative;">
+            <div class="inside-square"></div>
+            <div class="link-button">
+                Twitter
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    const textPlace = document.getElementById("typed-text")
+    const text1 = "AI Astronauts";
+    const text2 = "AI Physicist";
+    const text3 = "Al Teaching Assistant";
+    const speed = 200;
+
+    async function delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function typeWriter(text,i) {
+        let index = i || 0;
+        if (index < text.length) {
+            textPlace.innerHTML += text[index];
+            index++;
+            await delay(speed);
+            await typeWriter(text, index);
+        }
+    }
+
+    async function delWriter(i) {
+        let index = i || textPlace.innerText.length;
+        if (index > 0) {
+            textPlace.innerText = textPlace.innerText.slice(0, -1);
+            index--;
+            await delay(speed);
+            await delWriter(i);
+        }
+    }
+
+    async function start() {
+        await delWriter();
+        await typeWriter(text1);
+        await delWriter();
+        await typeWriter(text2);
+        await delWriter();
+        await typeWriter(text3);
+    }
+
+    start()
+</script>
+</body>
+</html>
