@@ -62,7 +62,7 @@
         }
     </style>
 </head>
-<body style="font-family: Fragment Mono,monospace;background-image: url(src/media/background.svg);background-size: cover;background-repeat: no-repeat;background-position-y: center;background-position-x: center;margin: 0;padding: 0;">
+<body style="font-family: Fragment Mono,monospace;background-color:rgb(254,236,215);background-image: url(src/media/background.svg);background-size: cover;background-repeat: no-repeat;background-position-y: center;background-position-x: center;margin: 0;padding: 0;">
 <div style="height: 100vh;display: flex;justify-content: space-between;flex-direction: column;align-items: center;">
     <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 4vw;">
         <img alt="logo"
@@ -73,11 +73,10 @@
              src="src/media/text.svg"/>
     </div>
     <div style="width: 90%;display: flex;flex-direction: column;align-items: center;">
-        <div style="background-color: #1E0706;border: 0.0625vw solid #FFFFFF;display: flex;border-radius: 1.5vw;font-size: 3.5vw;padding: 2.5vw 3.5vw;">
+        <div style="width: 90%;background-color: #1E0706;border: 0.0625vw solid #FFFFFF;display: flex;border-radius: 1.5vw;font-size: 3.5vw;padding: 2.5vw 3.5vw;">
             <div style="color:#E23528;margin-right: 1.5vw;">Decentralizing</div>
-<!--            <div style="display: flex;">-->
-                <div style="color:white;" id="typed-text">Al Teaching Assistant</div><span id="cursor" class="cursor"></span>
-<!--            </div>-->
+            <div style="color:white;" id="typed-text">Al Teaching Assistant</div>
+            <span id="cursor" class="cursor"></span>
         </div>
         <div style="color:#E42B1E;background-color: black;font-size: 2vw;padding: 0.75vw 2.25vw;border-radius: 1.75vw;width: max-content;margin-top: 2.5vw;">
             Cmd: abcdsifakldfiakd
@@ -122,7 +121,7 @@
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async function typeWriter(text,i) {
+    async function typeWriter(text, i) {
         let index = i || 0;
         if (index < text.length) {
             textPlace.innerHTML += text[index];
