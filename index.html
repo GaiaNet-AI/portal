@@ -128,6 +128,7 @@
     const text2 = "AI Physicist";
     const text3 = "Al Teaching Assistant";
     const speed = 200;
+    const wait = 500;
 
     async function delay(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
@@ -156,8 +157,10 @@
     async function start() {
         await delWriter();
         await typeWriter(text1);
+        await delay(wait);
         await delWriter();
         await typeWriter(text2);
+        await delay(wait);
         await delWriter();
         await typeWriter(text3);
     }
