@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400,700&display=swap" rel="stylesheet">
     <title>GaiaNet-AI</title>
     <style>
         a {
@@ -14,46 +14,84 @@
 
         .link-button {
             cursor: pointer;
+            color: black;
             font-size: 1.8vw;
-            color: white;
-            background: rgb(30, 7, 6);
-            padding: 1.2vw 3.5vw;
-            border: 0.0625vw solid rgba(212, 51, 39, 0.7);
-            position: relative;
-            clip-path: polygon(calc(100% - 1.0625vw) 0, calc(100% - 1.0625vw) 1.0625vw, 100% 1.0625vw, 100% 100%, 0 100%, 0 0);
-        }
-
-        .link-button::after {
-            content: "";
-            width: 1vw;
-            height: 1vw;
-            background-color: transparent;
-            border-left: 0.0625vw solid rgba(212, 51, 39, 0.7);
-            border-bottom: 0.0625vw solid rgba(212, 51, 39, 0.7);
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
-
-        .inside-square {
-            width: 1vw;
-            height: 1vw;
-            background-color: #B82016;
-            position: absolute;
-            top: -0.3vw;
-            right: -0.3vw;
+            padding: 1vw 2vw;
+            background-color: #F5F5F5;
+            border: 0.0625vw solid black;
+            transition: transform 0.3s ease;
         }
 
         .link-button:hover {
-            background-color: #B82016;
+            transform: translate(-10px, -10px);
+        }
+
+        .link-button:active {
+            transform: translate(-7px, -7px);
+        }
+
+        .button-back {
+            background-color: #1E0706;
+            border: 0.0625vw solid black;
         }
 
         .cursor {
             display: inline-block;
-            width: 2px; /* 光标宽度 */
-            height: 100%; /* 光标高度 */
-            background-color: white; /* 光标颜色 */
-            animation: blink 1s infinite; /* 光标闪烁动画 */
+            width: 0.125vw;
+            height: 3.5vw;
+            margin-left: 0.5vw;
+            background-color: white;
+            animation: blink 1s infinite;
+        }
+
+        #typed-text {
+            color: white;
+        }
+
+        .input-line {
+            font-weight: bold;
+            width: 90%;
+            background-color: #1E0706;
+            border: 0.0625vw solid #FFFFFF;
+            display: flex;
+            border-radius: 1.5vw;
+            font-size: 3.5vw;
+            padding: 2.5vw 3.5vw;
+        }
+
+        .logo{
+            margin-left: 5.5vw;
+            margin-top: 4vw;
+            width: 22.5vw;
+        }
+        .text {
+            margin-right: 5.5vw;
+            width: 26.75vw;
+            margin-top: 4vw;
+        }
+
+        .button-padding {
+            flex: 1;
+        }
+        .black {
+            color: #D43327;
+        }
+        .red {
+            color: white;
+        }
+        .white {
+            color: #0F0F0F;
+        }
+        .column {
+            font-size: 0.8vw;
+            white-space: nowrap;
+            overflow: hidden;
+            text-align: center;
+            line-height: 2vw;
+        }
+        .row {
+            overflow: hidden;
+            width: 2vw;
         }
 
         @keyframes blink {
@@ -64,67 +102,159 @@
                 opacity: 0;
             }
         }
+
+        @media only screen and (max-width: 768px) {
+            .link-button {
+                font-size: 4.8vw;
+                padding: 3vw 2vw;
+                transform: translate(-0.6vw, -0.6vw);
+            }
+
+            .link-button:hover {
+                transform: translate(-0.6vw, -0.6vw);
+            }
+
+            .link-button:active {
+                transform: translate(-0.2vw, -0.2vw);
+            }
+
+            #typed-text {
+                margin-top: 2vw;
+                color: black;
+            }
+
+            .input-line {
+                font-size: 6.8vw;
+                background-color: transparent;
+                border: 0;
+                display: block;
+            }
+
+            .logo{
+                margin-left: 8vw;
+                margin-top: 8vw;
+                width: 40vw;
+            }
+            .text {
+                margin-right: 8vw;
+                margin-top: 8vw;
+                width: 40vw;
+            }
+
+            .black {
+                color: #0F0F0F;
+            }
+            .red {
+                color: #D43327;
+            }
+            .white {
+                color: #DCDFE4;
+            }
+
+            .column {
+                line-height: 5vw;
+            }
+            .row {
+                width: 5vw;
+            }
+
+            .button-place {
+                flex-direction: column;
+            }
+
+            .button-padding {
+                flex: 0;
+                margin: 8vw 2vw;
+            }
+
+            .cursor {
+                margin-top: 2vw;
+                height: 6.2vw;
+                margin-left: 1vw;
+                background-color: black;
+            }
+        }
     </style>
 </head>
-<body style="font-family: Fragment Mono,monospace;background-color:rgb(254,236,215);background-image: url(src/media/background.svg);background-size: cover;background-repeat: no-repeat;background-position-y: center;background-position-x: center;margin: 0;padding: 0;">
+<body style="font-family: Space Grotesk,monospace;background-image: url(src/media/background.svg);background-size: cover;background-repeat: no-repeat;background-position-y: center;background-position-x: center;margin: 0;padding: 0;position: relative;">
+<div style="width: 100vw;position: absolute;display: flex;">
+    <div class="column black" style="background-color: #0F0F0F;width: 50vw;">[ Decentralizing Generative AI Chatbot and Agent ]</div>
+    <div class="column white" style="background-color: #DCDFE4;width: 20vw;"><<<<<<<<<<</div>
+    <div class="column red" style="background-color: #D43327;width: 30vw;"><<<<<<<<<<<<<<<<</div>
+</div>
+<div style="position: absolute;right: 0;">
+    <div class="row red" style="background-color: #D43327;height: 70vh;"></div>
+    <div class="row black" style="background-color: #0F0F0F;height: 30vh;"></div>
+</div>
+<div style="position: absolute;left: 0;">
+    <div class="row black" style="background-color: #0F0F0F;height: 30vh;"></div>
+    <div class="row red" style="background-color: #D43327;height: 70vh;"></div>
+</div>
+<div style="width: 100vw;position: absolute;bottom: 0;display: flex;">
+    <div class="column red" style="background-color: #D43327;width: 30vw;"><<<<<<<<<<<<<<<<</div>
+    <div class="column white" style="background-color: #DCDFE4;width: 20vw;"><<<<<<<<<<</div>
+    <div class="column black" style="background-color: #0F0F0F;width: 50vw;">[ Decentralizing Generative AI Chatbot and Agent ]</div>
+</div>
 <div style="height: 100vh;display: flex;justify-content: space-between;flex-direction: column;align-items: center;">
-    <div style="width: 100%;display: flex;justify-content: space-between;margin-top: 4vw;">
-        <img alt="logo"
-             style="-webkit-user-drag: none;user-select: none;width: 22.5vw;margin-left: 5.5vw;"
+    <div style="width: 100%;display: flex;justify-content: space-between;">
+        <img alt="logo" class="logo"
+             style="-webkit-user-drag: none;user-select: none;"
              src="src/media/logo.svg"/>
-        <img alt="text"
-             style="-webkit-user-drag: none;user-select: none;width: 26.75vw;margin-right: 5.5vw;"
+        <img alt="text" class="text"
+             style="-webkit-user-drag: none;user-select: none;"
              src="src/media/text.svg"/>
     </div>
     <div style="width: 90%;display: flex;flex-direction: column;align-items: center;">
-        <div style="width: 90%;background-color: #1E0706;border: 0.0625vw solid #FFFFFF;display: flex;border-radius: 1.5vw;font-size: 3.5vw;padding: 2.5vw 3.5vw;">
+        <div class="input-line">
             <div style="color:#E23528;margin-right: 1.5vw;">Decentralizing</div>
-            <div style="color:white;" id="typed-text">Al Teaching Assistant</div>
-            <span id="cursor" class="cursor"></span>
-        </div>
-        <div style="color:#E42B1E;background-color: black;font-size: 2vw;padding: 0.75vw 2.25vw;border-radius: 1.75vw;width: max-content;margin-top: 2.5vw;">
-            Cmd: abcdsifakldfiakd
+            <div style="display:flex;align-items: center;">
+                <div id="typed-text">Al Teaching Assistant</div>
+                <span class="cursor"></span>
+            </div>
         </div>
     </div>
-    <div style="margin-bottom: 4vw;width: 80%;display: flex;justify-content: space-between;">
-        <a target="_blank" href="https://github.com/GaiaNet-AI">
-            <div style="position: relative;">
-                <div class="inside-square"></div>
-                <div class="link-button">
-                    Github
+    <div class="button-place" style="margin-bottom: 4vw;width: 80%;display: flex;justify-content: space-between;">
+        <div style="flex: 3;display: flex;justify-content: space-around;">
+            <a style="flex: 1;text-align: center;" target="_blank" href="https://github.com/GaiaNet-AI">
+                <div class="button-back">
+                    <div class="link-button">
+                        GitHub
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a target="_blank" href="https://huggingface.co/gaianet">
-            <div style="position: relative;">
-                <div class="inside-square"></div>
-                <div class="link-button">
-                    huggingface
+            </a>
+            <div class="button-padding"></div>
+            <a style="flex: 1;text-align: center;" target="_blank" href="https://huggingface.co/gaianet">
+                <div class="button-back">
+                    <div class="link-button">
+                        huggingface
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a aria-disabled="true">
-            <div style="position: relative;">
-                <div class="inside-square"></div>
-                <div class="link-button">
-                    WaitList
+            </a>
+        </div>
+        <div style="flex: 1;"></div>
+        <div style="flex: 3;display: flex;justify-content: space-around;">
+            <a style="flex: 1;text-align: center;" aria-disabled="true">
+                <div class="button-back">
+                    <div class="link-button">
+                        WaitList
+                    </div>
                 </div>
-            </div>
-        </a>
-        <a target="_blank" href="https://twitter.com/gaianet_ai">
-            <div style="position: relative;">
-                <div class="inside-square"></div>
-                <div class="link-button">
-                    Twitter
+            </a>
+            <div class="button-padding"></div>
+            <a style="flex: 1;text-align: center;" target="_blank" href="https://twitter.com/gaianet_ai">
+                <div class="button-back">
+                    <div class="link-button">
+                        Twitter
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        </div>
     </div>
 </div>
 <script>
 
     const textPlace = document.getElementById("typed-text")
-    const text1 = "AI Astronauts";
+    const text1 = "AI Astronaut";
     const text2 = "AI Physicist";
     const text3 = "Al Teaching Assistant";
     const speed = 200;
