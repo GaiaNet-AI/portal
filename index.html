@@ -56,7 +56,7 @@
         .input-line {
             font-weight: 700;
             width: 90%;
-            background-color: rgba(255,255,255,0.5);
+            background-color: rgba(255, 255, 255, 0.5);
             border: 0.0625vw solid #000000;
             display: flex;
             font-size: 3.5vw;
@@ -204,12 +204,12 @@
     <div class="column red" style="background-color: #D43327;width: 30vw;"><<<<<<<<<<<<<<<<</div>
 </div>
 <div style="position: absolute;right: 0;">
-    <div class="row red" style="background-color: #D43327;height: 70vh;"></div>
-    <div class="row black" style="background-color: #0F0F0F;height: 30vh;"></div>
+    <div class="row red" style="background-color: #D43327;"></div>
+    <div class="row black" style="background-color: #0F0F0F;"></div>
 </div>
 <div style="position: absolute;left: 0;">
-    <div class="row black" style="background-color: #0F0F0F;height: 30vh;"></div>
-    <div class="row red" style="background-color: #D43327;height: 70vh;"></div>
+    <div class="row black" style="background-color: #0F0F0F;"></div>
+    <div class="row red" style="background-color: #D43327;"></div>
 </div>
 <div style="width: 100vw;position: absolute;bottom: 0;display: flex;">
     <div class="column red" style="background-color: #D43327;width: 30vw;"><<<<<<<<<<<<<<<<</div>
@@ -218,7 +218,7 @@
         Agent ]
     </div>
 </div>
-<div style="height: 100vh;display: flex;justify-content: space-between;flex-direction: column;align-items: center;">
+<div class="body" style="display: flex;justify-content: space-between;flex-direction: column;align-items: center;">
     <div style="width: 100%;display: flex;justify-content: space-between;">
         <img alt="logo" class="logo"
              style="-webkit-user-drag: none;user-select: none;"
@@ -265,7 +265,8 @@
                 </div>
             </a>
             <div class="button-padding"></div>
-            <a class="button" style="flex: 1;text-align: center;" target="_blank" href="https://forms.gle/eURPjcs6iHmnyRiv8">
+            <a class="button" style="flex: 1;text-align: center;" target="_blank"
+               href="https://forms.gle/eURPjcs6iHmnyRiv8">
                 <div class="button-back">
                     <div class="link-button">
                         Feedback
@@ -277,18 +278,35 @@
 </div>
 <script>
 
-    document.querySelectorAll('.link-button').forEach(item=>{
+    const setWindowHeight = () => {
+        const windowHeight = window.innerHeight;
+
+        document.querySelector('.body').style.height = windowHeight + "px";
+        document.querySelectorAll('.row').forEach(item => {
+            if (item.className.indexOf("red") !== -1) {
+                item.style.height = windowHeight * 0.7 + "px";
+            } else if (item.className.indexOf("black") !== 1) {
+                item.style.height = windowHeight * 0.3 + "px";
+            }
+        })
+    }
+
+    window.onresize = setWindowHeight;
+
+    setWindowHeight();
+
+    document.querySelectorAll('.link-button').forEach(item => {
         item.addEventListener('mouseover', function () {
-            if(window.screen.width > 768 && item.parentNode){
+            if (window.screen.width > 768 && item.parentNode) {
                 item.parentNode.style.backgroundColor = '#1E0706';
                 item.parentNode.style.border = '0.0625vw solid black';
             }
         });
     })
 
-    document.querySelectorAll('.link-button').forEach(item=>{
+    document.querySelectorAll('.link-button').forEach(item => {
         item.addEventListener('mouseout', function () {
-            if(window.screen.width > 768 && item.parentNode) {
+            if (window.screen.width > 768 && item.parentNode) {
                 item.parentNode.style.backgroundColor = 'transparent';
                 item.parentNode.style.border = '0.0625vw solid transparent';
             }
